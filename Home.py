@@ -29,7 +29,7 @@ with st.form("My-Form"):
         
         lr = st.number_input(
             label="lr (Learning Rate)", 
-            min_value=0.00001, value = 0.003, 
+            min_value=0.00001, value = 0.003, format="%0.4f", step = 0.0001,
             help="Learning Rate")
         
         gaussian_mapping_size = None
@@ -52,7 +52,7 @@ with st.form("My-Form"):
         
         gamma = st.number_input(
             label = "gamma(lr decay constant)", 
-            min_value=0.5, value=0.995, max_value=1.000, step=0.01,
+            min_value=0.5, value=0.995, max_value=1.000, format="%0.4f", step=0.001,
             help = "Rate at which the learning rate decays")
         
         gaussian_scale_factor = None
