@@ -25,7 +25,6 @@ class VanillaNN(nn.Module):
         super().__init__()
         self.blk1 = LinearReLUBlock(2, n_hidden)
         self.blk2 = LinearReLUBlock(n_hidden, n_hidden)
-        self.blk3 = LinearReLUBlock(n_hidden, n_hidden)
         self.output = nn.Sequential(
             nn.Linear(n_hidden, 3),
             nn.Sigmoid()
@@ -34,9 +33,8 @@ class VanillaNN(nn.Module):
     def forward(self, x):
         x1 = self.blk1(x)
         x2 = x1 + self.blk2(x1)
-        x3 = x1 + x2 + self.blk3(x2)
-        x4 = self.output(x3)
-        return x4
+        x3 = self.output(x2)
+        return x3
 
 class FFN(nn.Module):
     def __init__(
@@ -52,7 +50,6 @@ class FFN(nn.Module):
 
         self.blk1 = LinearReLUBlock(gaussian_mapping_size*2, n_hidden//4)
         self.blk2 = LinearReLUBlock(n_hidden//4, n_hidden)
-        self.blk3 = LinearReLUBlock(n_hidden, n_hidden)
         self.output = nn.Sequential(
             nn.Linear(n_hidden, 3),
             nn.Sigmoid()
@@ -67,7 +64,6 @@ class FFN(nn.Module):
         
         x1 = self.blk1(new_x)
         x2 = self.blk2(x1)
-        x3 = x2 + self.blk3(x2)
-        x4 = self.output(x3)
+        x3 = self.output(x2)
         
-        return x4
+        return x3
