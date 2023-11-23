@@ -9,12 +9,7 @@ https://github.com/JayantTaneja/Fourier-Feature-Networks/assets/79043865/fe3d556
 
 ---
 
-## Running
-
-### Live Demo
-Visit [live demo link](https://fourier-feature-networks.streamlit.app/)
-
-### Locally
+## Installation
 
 ```bash
 >>> git clone https://github.com/JayantTaneja/Fourier-Feature-Networks.git
